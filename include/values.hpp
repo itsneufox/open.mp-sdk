@@ -3,7 +3,7 @@
 #include "types.hpp"
 
 constexpr int MAX_SEATS = 4;
-constexpr int PLAYER_POOL_SIZE = 2048;
+constexpr int PLAYER_POOL_SIZE = 1000;
 constexpr int NPC_POOL_SIZE = 1000;
 constexpr int VEHICLE_POOL_SIZE = 2000;
 constexpr int CLASS_POOL_SIZE = 320;
