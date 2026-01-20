@@ -3,7 +3,7 @@
 #include "types.hpp"
 
 constexpr int MAX_SEATS = 4;
-constexpr int PLAYER_POOL_SIZE = 1000;
+constexpr int PLAYER_POOL_SIZE = 2048;
 constexpr int NPC_POOL_SIZE = 1000;
 constexpr int VEHICLE_POOL_SIZE = 2000;
 constexpr int CLASS_POOL_SIZE = 320;
@@ -28,14 +28,14 @@ constexpr int MAX_OBJECT_MATERIAL_SLOTS = 16;
 constexpr int TEXT_LABEL_POOL_SIZE = 1024;
 constexpr int INVALID_TEXT_LABEL_ID = 0xFFFF;
 constexpr int PICKUP_POOL_SIZE = 4096;
-constexpr int GLOBAL_TEXTDRAW_POOL_SIZE = 2048;
+constexpr int GLOBAL_TEXTDRAW_POOL_SIZE = 256;
 constexpr int PLAYER_TEXTDRAW_POOL_SIZE = 2048;
 constexpr int MAX_VEHICLE_COMPONENTS = 194;
 constexpr int INVALID_COMPONENT_ID = 0;
 constexpr int MAX_VEHICLE_COMPONENT_SLOT = 16;
 constexpr int MAX_VEHICLE_COMPONENT_SLOT_IN_RPC = 14;
 constexpr int MAX_TEXT_LABELS = 1024;
-constexpr int MAX_GLOBAL_TEXTDRAWS = 2048;
+constexpr int MAX_GLOBAL_TEXTDRAWS = 256;
 constexpr int MAX_PLAYER_TEXTDRAWS = 2048;
 constexpr int INVALID_TEXTDRAW = 0xFFFF;
 constexpr int ACTOR_POOL_SIZE = 1000;
