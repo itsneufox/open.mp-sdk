@@ -369,7 +369,7 @@ struct INPC : public IExtensible, public IIDProvider
 	virtual bool playNode(int nodeId, NPCMoveType moveType, float moveSpeed = NPC_MOVE_SPEED_AUTO, float radius = 0.0f, bool setAngle = true) = 0;
 
 	/// Start node-based movement for the NPC with extended options
-	virtual bool playNodeEx(int nodeId, NPCMoveType moveType, float moveSpeed = NPC_MOVE_SPEED_AUTO, float radius = 0.0f, bool setAngle = true, bool laneAware = false) = 0;
+	virtual bool playNodeEx(int nodeId, NPCMoveType moveType, float moveSpeed = NPC_MOVE_SPEED_AUTO, float radius = 0.0f, bool setAngle = true, bool laneAware = false, bool smoothDriving = false) = 0;
 
 	/// Stop node-based movement
 	virtual void stopPlayingNode() = 0;
