@@ -26,6 +26,37 @@ enum class EntityCheckType : uint8_t
 	All = 255
 };
 
+struct NPCPathNodeData
+{
+	Vector3 position = Vector3(0.0f, 0.0f, 0.0f);
+	uint16_t linkId = 0;
+	uint16_t areaId = 0;
+	uint16_t nodeId = 0;
+	uint8_t pathWidth = 0;
+	uint8_t floodFill = 0;
+	uint32_t flags = 0;
+};
+
+struct NPCNaviNodeData
+{
+	Vector2 position = Vector2(0.0f, 0.0f);
+	uint16_t areaId = 0;
+	uint16_t nodeId = 0;
+	int8_t directionX = 0;
+	int8_t directionY = 0;
+	uint32_t flags = 0;
+};
+
+struct NPCNodeLinkData
+{
+	uint16_t areaId = 0;
+	uint16_t nodeId = 0;
+	uint16_t naviAreaId = 0;
+	uint16_t naviNodeId = 0;
+	uint8_t length = 0;
+	uint8_t intersectionFlags = 0;
+};
+
 struct INPC : public IExtensible, public IIDProvider
 {
 	/// Get player instance of NPC.
@@ -337,6 +368,9 @@ struct INPC : public IExtensible, public IIDProvider
 	/// Start node-based movement for the NPC
 	virtual bool playNode(int nodeId, NPCMoveType moveType, float moveSpeed = NPC_MOVE_SPEED_AUTO, float radius = 0.0f, bool setAngle = true) = 0;
 
+	/// Start node-based movement for the NPC with extended options
+	virtual bool playNodeEx(int nodeId, NPCMoveType moveType, float moveSpeed = NPC_MOVE_SPEED_AUTO, float radius = 0.0f, bool setAngle = true, bool laneAware = false) = 0;
+
 	/// Stop node-based movement
 	virtual void stopPlayingNode() = 0;
 
@@ -508,4 +542,16 @@ struct INPCComponent : public IPool<INPC>, public INetworkComponent
 
 	/// Get node information (vehicle nodes, pedestrian nodes, navigation nodes)
 	virtual bool getNodeInfo(int nodeId, uint32_t& vehicleNodes, uint32_t& pedNodes, uint32_t& naviNodes) = 0;
+
+	/// Get full point data from a node file
+	virtual bool getNodePointData(int nodeId, uint16_t pointId, NPCPathNodeData& data) = 0;
+
+	/// Get full navi node data from a node file
+	virtual bool getNaviNodeData(int nodeId, uint16_t naviId, NPCNaviNodeData& data) = 0;
+
+	/// Get the total number of links in a node file
+	virtual int getNodeLinkCount(int nodeId) = 0;
+
+	/// Get link data from a node file
+	virtual bool getNodeLinkData(int nodeId, uint16_t linkId, NPCNodeLinkData& data) = 0;
 };
